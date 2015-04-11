@@ -73,12 +73,15 @@ int main(){
     stud = allocate();
 
     /*call generate*/
+    generate(stud);
     
     /*call output*/
+    output(stud);
     
     /*call summary*/
     
     /*call deallocate*/
+    deallocate(stud);
 
     return 0;
 }
