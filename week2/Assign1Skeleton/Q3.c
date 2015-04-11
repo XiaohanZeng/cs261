@@ -3,8 +3,9 @@
  * Date: 04/11/2015
  * Solution description:
  */
- 
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 void sort(int* number, int n){
      /*Sort the given array number , of length n*/
