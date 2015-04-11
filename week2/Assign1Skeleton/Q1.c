@@ -35,7 +35,7 @@ void generate(struct student* students){
     for (int i = 0; i < 10; i++)
     {
         struct student s;
-        int tempIndex = rand() % 10;
+        int tempIndex = rand() % (10 - i);
         s.id = IDgroup[tempIndex];
         removeAtDynArr(IDgroup, tempIndex, 10 - i);
         s.score = rand() % 100;
@@ -52,7 +52,7 @@ void output(struct student* students){
               ID10 score10*/
     for (int i = 0; i < 10; i++)
     {
-        printf("ID %d, Score %d", students[i].id, students[i].score);
+        printf("ID %d, Score %d \n", students[i].id, students[i].score);
     }
 }
 
