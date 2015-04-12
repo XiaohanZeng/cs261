@@ -35,13 +35,11 @@ void sticky(char* word){
 
 int main(){
     /*Read word from the keyboard using scanf*/
-    char word[200];
-    printf("enter a word\n");
+    char word[200]; 
     scanf("%s", word);
-    printf("word is %s\n", word);
     /*Call sticky*/
     sticky(word);
     /*Print the new word*/
-    printf("%s \n", word);
+    printf("word: %s \n", word);
     return 0;
 }
