@@ -19,14 +19,28 @@ char toLowerCase(char ch){
 
 void sticky(char* word){
      /*Convert to sticky caps*/
+    for (int i = 0; word[i] != '\0'; i++)
+    {
+        if (i % 2 == 0 && word[i] <= 'z' && word[i] >= 'a')
+        {
+            word[i] = toUpperCase(word[i]);
+        }
+        if (i % 2 == 1 && word[i] <= 'Z' && word[i] >= 'A')
+        {
+            word[i] = toLowerCase(word[i]);
+        }
+    }
+
 }
 
 int main(){
     /*Read word from the keyboard using scanf*/
-    
+    char* word;
+    printf("enter a word\n");
+    scanf("%s", word);
     /*Call sticky*/
-    
+    sticky(word);
     /*Print the new word*/
-    
+    printf("%s \n", word);
     return 0;
 }
