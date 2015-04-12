@@ -65,6 +65,7 @@ int main(){
     /*Pass this array along with n to the sort() function*/
     sort(students, n);
     /*Print the contents of the array of n students.*/
+    printf("sorted students\n");
     for (int i = 0; i < n; i++)
     {
         printf("ID %d, Score %d \n", students[i].id, students[i].score);

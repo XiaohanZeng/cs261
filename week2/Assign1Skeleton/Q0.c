@@ -11,18 +11,18 @@ void fooA(int* iptr){
      /*Print the value pointed to by iptr*/
     printf("Value pointed to by input is %d\n", *iptr);
      /*Print the address pointed to by iptr*/
-    printf("Address pointed to by input is %x\n", iptr);
+    printf("Address pointed to by input is %p\n", iptr);
      /*Print the address of iptr itself*/
-    printf("Address of input itself %x\n", &iptr);
+    printf("Address of input itself %p\n", &iptr);
 }
 
 int main(){
     
     /*declare an integer x*/
-    int x;
+    int x = 2;
 
     /*print the address of x*/
-    printf("Adress of x = %d\n", &x);
+    printf("Adress of x = %p\n", &x);
 
     /*Call fooA() with the address of x*/
     fooA(&x);
