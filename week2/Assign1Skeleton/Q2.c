@@ -31,7 +31,7 @@ int main(){
     printf("foo return %d\n", temp);
     /*Print the values of x, y and z again*/
     printf("x is %d, y is %d, z is %d\n", x, y, z);
-    /*Is the return value different than the value of z?  Why?*/
+    /*Is the return value different than the value of z?  Why? Because c is passed by value in foo, not the address. So any change on c is local.*/
     return 0;
 }
     
