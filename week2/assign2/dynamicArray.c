@@ -95,13 +95,14 @@ void _dynArrSetCapacity(DynArr *v, int newCap)
 	/* FIXME: You will write this function */
     TYPE * newData = (TYPE *)malloc(sizeof(TYPE) * newCap);
     assert(newData != 0);
-    DynArr* temp = v;
+    TYPE* temp = v->data;
     for (int i = 0; i < v->size; i++)
     {
         newData[i] = v->data[i];
     }
     v->data = newData;
-    deleteDynArr(temp);
+    v->capacity = newCap;
+    free(temp);
     
 
 }
@@ -132,10 +133,11 @@ void addDynArr(DynArr *v, TYPE val)
 	/* FIXME: You will write this function */
     if (v->size >= v->capacity)
     {
-        _dynArrSetCapacity(v, 2 * v->capacity);
+        _dynArrSetCapacity(v, v->capacity*2);
+    }
         v->data[v->size] = val;
         v->size++;
-    }
+    
 }
 
 /*	Get an element from the dynamic array from a specified position
@@ -152,7 +154,7 @@ void addDynArr(DynArr *v, TYPE val)
 TYPE getDynArr(DynArr *v, int pos)
 {
 	/* FIXME: You will write this function */
-    assert(pos > 0 && pos < v->size);
+       assert(pos >= 0 && pos < v->capacity);
 
 	/* FIXME: you must change this return value */
 	return v->data[pos]; 
@@ -172,9 +174,17 @@ TYPE getDynArr(DynArr *v, int pos)
 void putDynArr(DynArr *v, int pos, TYPE val)
 {
 	/* FIXME: You will write this function */
-    assert(pos > 0 && pos < v->capacity);
-        putDynArr(v, pos, val);
-        v->size++;
+         assert(pos >= 0 && pos < v->capacity);
+        if(v->size >= v->capacity || pos > v->capacity)
+	{
+               _dynArrSetCapacity(v, v->capacity*2);
+		
+	}
+        v->data[pos] = val;
+	if(pos >=  v-> size)
+        {
+            v->size++;
+        }
   
 }
 
@@ -214,6 +224,7 @@ void removeAtDynArr(DynArr *v, int idx)
     {
         v->data[i] = v->data[i + 1];
     }
+    v->size--;
      
     
 }
