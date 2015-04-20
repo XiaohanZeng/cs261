@@ -324,10 +324,13 @@ double calculate(int numInputTokens, char **inputString)
 	 * (1) Check if everything looks OK and produce an error if needed.
 	 * (2) Store the final value in result and print it out.
 	 */
-    printf("%s\n", error);
+	if (error != NULL)
+	{
+    		printf("%s\n", error);
+	}
     if (sizeDynArr(stack) == 1)
     {
-        printf(stack);
+	result = topDynArr(stack);
     }
     else
     {
@@ -343,6 +346,7 @@ int main(int argc , char** argv)
 	if (argc == 1)
 		return 0;
 
-	calculate(argc,argv);
+	double result = calculate(argc,argv);
+	printf("result is %f\n", result);
 	return 0;
 }
