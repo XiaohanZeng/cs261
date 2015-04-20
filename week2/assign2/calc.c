@@ -104,7 +104,7 @@ double calculate(int numInputTokens, char **inputString)
 	double result = 0.0;
 	char *s;
 	struct DynArr *stack;
-	char *error;
+	char *error = NULL;
 
 	//set up the stack
 	stack = createDynArr(20);
@@ -301,11 +301,11 @@ double calculate(int numInputTokens, char **inputString)
             // FIXME: You need to develop the code here (when s is not an operator)
             // Remember to deal with special values ("pi" and "e")
             double add = 0;
-            if (strcmp(s, "pi"))
+            if (strcmp(s, "pi") == 0)
             {
                 add = 3.14159265;
             }
-            else if (strcmp(s, "e"))
+            else if (strcmp(s, "e") == 0)
             {
                 add = 2.7182818;
             }
