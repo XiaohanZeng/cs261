@@ -175,111 +175,164 @@ double calculate(int numInputTokens, char **inputString)
 		{
 			double i = 0;
 			double squ  = 0;
-			assert(sizeDynArr(stack) >= 1);
-			i = topDynArr(stack);
-			popDynArr(stack);
-			squ = pow(i,2);
-			pushDynArr(stack, squ);
-			printf("Squaring\n");
+            if (sizeDynArr(stack) >= 1)
+            {
+                i = topDynArr(stack);
+                popDynArr(stack);
+                squ = pow(i, 2);
+                pushDynArr(stack, squ);
+                printf("Squaring\n");
+            }
+            else
+            {
+                error = "not enough number for squaring";
+            }
 		}
 		else if(strcmp(s, "^3") == 0)
 			/* FIXME: replace printf with your own function */
 		{
 			double i = 0;
 			double cub  = 0;
-			assert(sizeDynArr(stack) >= 1);
-			i = topDynArr(stack);
-			popDynArr(stack);
-			cub = pow(i,3);
-			pushDynArr(stack, cub);
-			printf("Cubing\n");
+            if (sizeDynArr(stack) >= 1)
+            {
+                i = topDynArr(stack);
+                popDynArr(stack);
+                cub = pow(i, 3);
+                pushDynArr(stack, cub);
+                printf("Cubing\n");
+            }
+            else
+            {
+                error = "not enough number for cubing";
+            }
 		}
 		else if(strcmp(s, "abs") == 0)
 			/* FIXME: replace printf with your own function */
 		{
 			double i = 0;
 			double absNumber  = 0;
-			assert(sizeDynArr(stack) >= 1);
-			i = topDynArr(stack);
-			popDynArr(stack);
-			absNumber = abs(i);
-			pushDynArr(stack, absNumber);
-			printf("Absolute value\n");
+            if (sizeDynArr(stack) >= 1)
+            {
+                i = topDynArr(stack);
+                popDynArr(stack);
+                absNumber = (double)abs(i);
+                pushDynArr(stack, absNumber);
+                printf("Absolute value\n");
+            }
+            else
+            {
+                error = "not enough number for absolute ";
+            }
 		}
 		else if(strcmp(s, "sqrt") == 0)
 			/* FIXME: replace printf with your own function */
 		{
 			double i = 0;
 			double sqrtNumber  = 0;
-			assert(sizeDynArr(stack) >= 1);
-			i = topDynArr(stack);
-			popDynArr(stack);
-			sqrtNumber = sqrt(i);
-			pushDynArr(stack, sqrtNumber);
-			printf("Square root\n");
+            if (sizeDynArr(stack) >= 1)
+            {
+                i = topDynArr(stack);
+                popDynArr(stack);
+                sqrtNumber = sqrt(i);
+                pushDynArr(stack, sqrtNumber);
+                printf("Square root\n");
+            }
+            else
+            {
+                error = "not enough number for square root";
+            }
 		}
 		else if(strcmp(s, "exp") == 0)
 			/* FIXME: replace printf with your own function */
 		{
 			double i = 0;
 			double exp  = 0;
-			assert(sizeDynArr(stack) >= 1);
-			i = topDynArr(stack);
-			popDynArr(stack);
-			exp = pow(i,2.7182818);
-			pushDynArr(stack, exp);
-			printf("Exponential\n");
+            if (sizeDynArr(stack) >= 1)
+            {
+                i = topDynArr(stack);
+                popDynArr(stack);
+                exp = pow(i, 2.7182818);
+                pushDynArr(stack, exp);
+                printf("Exponential\n");
+            }
+            else
+            {
+                error = "not enough number for exponential";
+            }
 		}
 		else if(strcmp(s, "ln") == 0)
 			/* FIXME: replace printf with your own function */
 		{
   			double i = 0;
 			double ln  = 0;
-			assert(sizeDynArr(stack) >= 1);
-			i = topDynArr(stack);
-			popDynArr(stack);
-			ln = log(i);
-			pushDynArr(stack, ln);
-			printf("Natural Log\n");
+            if (sizeDynArr(stack) >= 1)
+            {
+                i = topDynArr(stack);
+                popDynArr(stack);
+                ln = log(i);
+                pushDynArr(stack, ln);
+                printf("Natural Log\n");
+            }
+            else
+            {
+                error = "not enough number for natural log";
+            }
 		}
 		else if(strcmp(s, "log") == 0)
 			/* FIXME: replace printf with your own function */
 		{
 	 		double i = 0;
 			double log  = 0;
-			assert(sizeDynArr(stack) >= 1);
-			i = topDynArr(stack);
-			popDynArr(stack);
-			log = log10(i);
-			pushDynArr(stack, log);
-			printf("Log\n");
+            if (sizeDynArr(stack) >= 1)
+            {
+                i = topDynArr(stack);
+                popDynArr(stack);
+                log = log10(i);
+                pushDynArr(stack, log);
+                printf("Log\n");
+            }
+            else
+            {
+                error = "not enough number for log";
+            }
 		}
-		else 
-		{
-			// FIXME: You need to develop the code here (when s is not an operator)
-			// Remember to deal with special values ("pi" and "e")
-			double add = 0;
-			if(strcmp(s, "pi"))
-			{
-				add = 3.14159265;
-			}
-			else if(strcmp(s, "e"))
-			{
-				add = 2.7182818;
-			}
-			else
-			{
-				assert( isNumber(s, &add)> 0);
-				
-			}
-			pushDynArr(stack,add);
-		}	//end for 
+        else
+        {
+            // FIXME: You need to develop the code here (when s is not an operator)
+            // Remember to deal with special values ("pi" and "e")
+            double add = 0;
+            if (strcmp(s, "pi"))
+            {
+                add = 3.14159265;
+            }
+            else if (strcmp(s, "e"))
+            {
+                add = 2.7182818;
+            }
+            else
+            {
+                if (isNumber(s, &add) == 0)
+                {
+                    error = "not a number or operator";
+                }
+            }
+            pushDynArr(stack, add);
+        }
+	}	//end for 
 
 	/* FIXME: You will write this part of the function (2 steps below) 
 	 * (1) Check if everything looks OK and produce an error if needed.
 	 * (2) Store the final value in result and print it out.
 	 */
-	
+    printf("%s\n", error);
+    if (sizeDynArr(stack) == 1)
+    {
+        printf(stack);
+    }
+    else
+    {
+        printf("caculate wrong \n");
+    }
 	return result;
 }
 
