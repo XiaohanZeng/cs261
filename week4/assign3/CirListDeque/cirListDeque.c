@@ -43,7 +43,10 @@ void _initCirListDeque (struct cirListDeque *q)
 {
   	/* FIXME: you must write this */	
     q->size = 0;
-    q->Sentinel = NULL;
+    struct DLink* first = _createLink(0);
+    q->Sentinel = first;
+    q->Sentinel->next = q->Sentinel;
+    q->Sentinel->prev = q->Sentinel;
 }
 
 /*
@@ -151,7 +154,7 @@ void addFrontCirListDeque(struct cirListDeque *q, TYPE val)
 }
 
 /* Get the value of the front of the deque
-
+ *
 	param: 	q		pointer to the deque
 	pre:	q is not null and q is not empty
 	post:	none
@@ -226,7 +229,7 @@ void removeBackCirListDeque(struct cirListDeque *q)
     assert(q != NULL && q->size != 0);
     struct DLink *move = q->Sentinel->prev;
     q->Sentinel->prev = move->prev;
-    move->next = q->Sentinel;
+    move->prev->next = q->Sentinel;
     free(move);
     q->size--;
 }
@@ -298,12 +301,13 @@ void reverseCirListDeque(struct cirListDeque *q)
     assert(q != NULL && q->size != 0);
     int count = 0;
     struct DLink* current = q->Sentinel;
-    do{
+   do{
 
         struct DLink* temp = current->next;
-        current->next = current->prev;
-        current->prev = temp;
-        current = temp;
+        struct DLink* tempPointer = current->prev;
+        current->prev = current->next;
+        current->next = tempPointer;
+	current = temp;
         count++;
-    } while (count <= (q->size + 1));
+    } while (count <=q->size );
 }
