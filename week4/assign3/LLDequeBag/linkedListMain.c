@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
 	b = createLinkedList(); 
 	//n = atoi(argv[1]);/*number of elements to add*/
 	int index = atoi(argv[1]);
-	for (int n = index; n <= 256000; n=n*2)
+	for (n = index; n <= 256000; n=n*2)
 	{
 		for( i = 0 ; i < n; i++) {
 			addList(b, (TYPE)i);/*Add elements*/
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
 		printf("Time for running contains() on %d elements: %g ms\n", n, t2-t1);
 	
 		/* delete the linked list */
-		deleteLinkedList(b);
+		//deleteLinkedList(b);
 	}
 	
 	return 0;
