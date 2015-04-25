@@ -42,28 +42,32 @@ int main(int argc, char* argv[]){
 	if( argc != 2 ) return 0;
   
 	b = createLinkedList(); 
-	n = atoi(argv[1]);/*number of elements to add*/
-	for( i = 0 ; i < n; i++) {
-		addList(b, (TYPE)i);/*Add elements*/
-	}	
+	//n = atoi(argv[1]);/*number of elements to add*/
+	int index = atoi(argv[1]);
+	for (int n = index; n <= 256000; n=n*2)
+	{
+		for( i = 0 ; i < n; i++) {
+			addList(b, (TYPE)i);/*Add elements*/
+		}	
   
-	#ifdef MEMORY_TEST_INCLUDED
-	/* memory used AFTER creating LinkedList */
-	m2 = getMemoryUsage();
-	printf("Memory used by LinkedList: %ld KB \n", m2-m1);
-	#endif
+		#ifdef MEMORY_TEST_INCLUDED
+		/* memory used AFTER creating LinkedList */
+		m2 = getMemoryUsage();
+		printf("Memory used by LinkedList: %ld KB \n", m2-m1);
+		#endif
   
-	t1 = getMilliseconds();/*Time before contains()*/
+		t1 = getMilliseconds();/*Time before contains()*/
 	
-	for(i=0; i<n; i++) {
-		containsList(b, i);		
-	}  
+		for(i=0; i<n; i++) {
+			containsList(b, i);		
+		}  
 	
-	t2 = getMilliseconds();/*Time after contains()*/
-	printf("Time for running contains() on %d elements: %g ms\n", n, t2-t1);
+		t2 = getMilliseconds();/*Time after contains()*/
+		printf("Time for running contains() on %d elements: %g ms\n", n, t2-t1);
 	
-	/* delete the linked list */
-	//deleteLinkedList(b);
+		/* delete the linked list */
+		deleteLinkedList(b);
+	}
 	
 	return 0;
 }
