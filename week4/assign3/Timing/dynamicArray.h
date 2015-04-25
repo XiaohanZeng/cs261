@@ -1,25 +1,20 @@
-/* 	dynArr.h : Dynamic Array implementation. */
+/* 	dynamicArray.h : Dynamic Array implementation. */
+#include<math.h>
+
 #ifndef DYNAMIC_ARRAY_INCLUDED
 #define DYNAMIC_ARRAY_INCLUDED 1
 
 
 # ifndef TYPE
-# define TYPE      int
-# define TYPE_SIZE sizeof(int)
-# endif
-
-# ifndef LT
-# define LT(A, B) ((A) < (B))
+# define TYPE     double 
+# define TYPE_SIZE sizeof(double)
 # endif
 
 # ifndef EQ
-# define EQ(A, B) ((A) == (B))
+# define EQ(A, B) (fabs(A - B) < 10e-7)
 # endif
 
-
-
 typedef struct DynArr DynArr;
-
 
 /* Dynamic Array Functions */
 DynArr *createDynArr(int cap);

@@ -41,8 +41,9 @@ int main(int argc, char* argv[]) {
 	if( argc != 2 ) return 0;
 	  
 	b = createDynArr(1000); 
-	n = atoi(argv[1]); /*number of elements to add*/
-		
+	int index = atoi(argv[1]); /*number of elements to add*/
+	for (n = index; n <= 256000; n=n*2)
+	{	
 	for( i = 0 ; i < n; i++) {
 		addDynArr(b, (TYPE)i); /*Add elements*/
 	}		
@@ -65,6 +66,6 @@ int main(int argc, char* argv[]) {
   
 	/* delete DynArr */
 	deleteDynArr(b);
-	
+	}
 	return 0;
 }
