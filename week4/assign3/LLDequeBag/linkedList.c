@@ -32,14 +32,14 @@ void _initList (struct linkedList *lst) {
     lst->size = 0;
 	struct DLink * first = malloc(sizeof(struct DLink));
     lst->firstLink = first;
-	first->value = 0;
-	first->next = NULL;
-	first->prev = NULL;
 	struct DLink * last = malloc(sizeof(struct DLink));
     lst->lastLink = last;
 	last->value = 0;
 	last->next = NULL;
-	last->prev = NULL;
+	last->prev = lst->firstLink;
+	first->value = 0;
+	first->next = lst->lastLink;
+	first->prev = NULL;
 }
 
 /*
