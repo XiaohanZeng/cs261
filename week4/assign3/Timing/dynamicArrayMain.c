@@ -40,32 +40,32 @@ int main(int argc, char* argv[]) {
 
 	if( argc != 2 ) return 0;
 	  
-	b = createDynArr(1000); 
 	int index = atoi(argv[1]); /*number of elements to add*/
-	for (n = index; n <= 256000; n=n*2)
-	{	
-	for( i = 0 ; i < n; i++) {
-		addDynArr(b, (TYPE)i); /*Add elements*/
-	}		
-	
-	#ifdef MEMORY_TEST_INCLUDED
-	/* memory used AFTER creating DynArr */
-	m2 = getMemoryUsage();  
-	printf("Memory used by DynArr: %ld KB \n", m2-m1);
-	#endif
-	
-	t1 = getMilliseconds();/*Time before contains()*/
-	
-	for(i=0; i<n; i++) {
-		containsDynArr(b, i);		
-	}	
-	
-	t2 = getMilliseconds();/*Time after contains()*/
-	
-	printf("Time for running contains() on %d elements: %g ms\n", n, t2-t1);
-  
-	/* delete DynArr */
-	deleteDynArr(b);
+	for (n = index; n <= 256000; n = n * 2)
+	{
+		b = createDynArr(1000);
+		for (i = 0; i < n; i++) {
+			addDynArr(b, (TYPE)i); /*Add elements*/
+		}
+
+		#ifdef MEMORY_TEST_INCLUDED
+				/* memory used AFTER creating DynArr */
+				m2 = getMemoryUsage();  
+				printf("Memory used by DynArr: %ld KB \n", m2-m1);
+		#endif
+
+		t1 = getMilliseconds();/*Time before contains()*/
+
+		for (i = 0; i < n; i++) {
+			containsDynArr(b, i);
+		}
+
+		t2 = getMilliseconds();/*Time after contains()*/
+
+		printf("Time for running contains() on %d elements: %g ms\n", n, t2 - t1);
+
+		/* delete DynArr */
+		deleteDynArr(b);
 	}
 	return 0;
 }
