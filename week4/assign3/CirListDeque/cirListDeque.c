@@ -211,7 +211,7 @@ void removeFrontCirListDeque (struct cirListDeque *q) {
     assert(q != NULL && q->size != 0);
     struct DLink *move = q->Sentinel->next;
     q->Sentinel->next = move->next;
-    move->prev = q->Sentinel;
+    move->next->prev = q->Sentinel;
     free(move);
     q->size--;
 }
