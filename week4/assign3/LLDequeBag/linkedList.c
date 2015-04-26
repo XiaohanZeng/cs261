@@ -1,3 +1,10 @@
+/*Xiaohan Zeng
+ *Cs 261
+ *Assignment 3 part 1
+ *
+ */
+
+
 #include "linkedList.h"
 #include <assert.h>
 #include <stdlib.h>
@@ -290,8 +297,8 @@ int containsList (struct linkedList *lst, TYPE e) {
     struct DLink* current = lst->firstLink->next;
     do{
         current = current->next;
-    } while (!EQ(current->value, e)&& current->next!=NULL);
-    if (current->next == lst->lastLink)
+    } while (!EQ(current->value, e)&& current!= lst->lastLink);
+    if (current == lst->lastLink)
         return 0;
     else
 	return 1;
@@ -310,11 +317,11 @@ int containsList (struct linkedList *lst, TYPE e) {
 void removeList (struct linkedList *lst, TYPE e) {
 	/* FIXME: you must write this */
     assert(lst != NULL && lst->size != 0);
-    struct DLink* current = lst->firstLink->next;
+    struct DLink* current = lst->firstLink;
     do{
         current = current->next;
-    } while (!EQ(current->value, e) && current->next != NULL);
-    if (current->next != lst->lastLink)
+    } while (!EQ(current->value, e) && current != lst->lastLink);
+    if (current != lst->lastLink)
     {
         _removeLink(lst, current);
     }
