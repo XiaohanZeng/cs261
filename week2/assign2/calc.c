@@ -1,3 +1,4 @@
+/*xiaohan zeng cs 261 week3*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

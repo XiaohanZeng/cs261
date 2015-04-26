@@ -41,11 +41,12 @@ int main(int argc, char* argv[]){
   
 	if( argc != 2 ) return 0;
   
-	b = createLinkedList(); 
+	
 	//n = atoi(argv[1]);/*number of elements to add*/
 	int index = atoi(argv[1]);
 	for (n = index; n <= 256000; n=n*2)
 	{
+		b = createLinkedList(); 
 		for( i = 0 ; i < n; i++) {
 			addList(b, (TYPE)i);/*Add elements*/
 		}	

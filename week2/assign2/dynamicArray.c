@@ -1,4 +1,5 @@
 /*	dynamicArray.c: Dynamic Array implementation. */
+/*Xiaohan Zeng  Cs 261 */
 #include <assert.h>
 #include <stdlib.h>
 #include "dynamicArray.h"
